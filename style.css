@@ -1,7 +1,18 @@
+@font-face {
+    font-family: "Noah";
+    src:
+      local("Noah Regular"),
+      url("resources/fonts/Noah-Free/Noah-Regular.ttf") format("opentype") tech(color-COLRv1),
+      url("resources/fonts/Noah-Free/Noah-Regular.otf") format("opentype"),
+      url("resources/fonts/Noah-Free/Noah-Regular.woff") format("woff"),
+      url("resources/fonts/Noah-Free/Noah-Regular.woff2") format("woff2");
+      font-weight: normal;
+  }
+
 body {
     margin: 0;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: "Noah Regular", Arial, sans-serif;
 }
 
 #menu {
