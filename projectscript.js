@@ -43,13 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
         displayProjects(filteredProjects);
     }
 
-    // Function to display projects dynamically
+    // Function to display projects dynamically as a carousel
     function displayProjects(projectList) {
         const projectsContainer = document.getElementById('projects-container');
         projectsContainer.innerHTML = ''; // Clear existing projects
 
+        // Duplicate the project list for carousel effect
+        const duplicatedProjects = [...projectList, ...projectList];
+
         // Create project elements dynamically
-        projectList.forEach((project, index) => {
+        duplicatedProjects.forEach((project, index) => {
             const projectElement = document.createElement('div');
             projectElement.className = 'project';
             projectElement.innerHTML = `
@@ -61,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
-            // Add click event to navigate to next project
-            projectElement.addEventListener('click', () => scrollToNextProject(projectElement));
+            // Set project height to full screen
+            projectElement.style.height = '100vh';
 
             projectsContainer.appendChild(projectElement);
         });
@@ -85,18 +88,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to scroll to the next project
-    function scrollToNextProject(currentProject) {
-        const nextProject = currentProject.nextElementSibling;
-        if (nextProject) {
-            nextProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            updateActiveIndicator(nextProject);
+    function scrollToNextProject() {
+        const projectsContainer = document.getElementById('projects-container');
+        const scrollHeight = projectsContainer.scrollHeight;
+        const scrollTop = projectsContainer.scrollTop;
+        const clientHeight = projectsContainer.clientHeight;
+
+        if (scrollHeight - scrollTop === clientHeight) {
+            // If at the bottom, scroll to the first project
+            projectsContainer.scrollTop = 0;
+        } else {
+            // Scroll to the next project
+            projectsContainer.scrollTop += clientHeight;
         }
     }
 
     // Function to update the active project indicator
-    function updateActiveIndicator(currentProject) {
+    function updateActiveIndicator() {
+        const projectsContainer = document.getElementById('projects-container');
         const projectIndicators = document.querySelectorAll('.project-indicator');
-        const index = Array.from(projectsContainer.children).indexOf(currentProject);
+        const index = Math.floor(projectsContainer.scrollTop / projectsContainer.clientHeight) % projectIndicators.length;
+
         projectIndicators.forEach((indicator, i) => {
             indicator.classList.toggle('active', i === index);
         });
@@ -104,12 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to jump to a specific project by clicking on the indicator
     function jumpToProject(index) {
-        const projects = Array.from(projectsContainer.children);
-        const targetProject = projects[index];
-        if (targetProject) {
-            targetProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            updateActiveIndicator(targetProject);
-        }
+        const projectsContainer = document.getElementById('projects-container');
+        projectsContainer.scrollTop = index * projectsContainer.clientHeight;
+        updateActiveIndicator();
     }
 
     // Fetch projects, populate filters, and display projects
@@ -125,4 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('projects').addEventListener('click', () => {
         displayProjects(allProjects);
     });
+
+    // Add scroll event listener for updating active project indicator
+    const projectsContainer = document.getElementById('projects-container');
+    projectsContainer.addEventListener('scroll', updateActiveIndicator);
+
+    // Add interval for automatic scrolling
+    //setInterval(scrollToNextProject, 5000); // Scroll every 5 seconds (adjust as needed)
 });
