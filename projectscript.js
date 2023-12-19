@@ -56,18 +56,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
-            // Add click event to navigate to individual project page
-            projectElement.addEventListener('click', () => openProjectPage(project.id));
+            // Set project height to full screen
+            projectElement.style.height = '100vh';
+
+            // Add click event to navigate to next project
+            projectElement.addEventListener('click', () => scrollToNextProject(projectElement));
 
             projectsContainer.appendChild(projectElement);
         });
     }
 
-    // Function to open individual project page
-    function openProjectPage(projectId) {
-        // Logic to open the project page based on projectId
-        // You can use AJAX or fetch to load the project content dynamically
-        // and update the project page accordingly
+    // Function to scroll to the next project
+    function scrollToNextProject(currentProject) {
+        const nextProject = currentProject.nextElementSibling;
+        if (nextProject) {
+            nextProject.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
     }
 
     // Fetch projects, populate filters, and display projects
@@ -77,6 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const allTags = projects.flatMap(project => project.tags);
         const uniqueTags = Array.from(new Set(allTags));
         populateFilters(uniqueTags);
+        displayProjects(allProjects);
+    });
+
+    // Reset filters and display all projects when "Projects" is clicked
+    document.getElementById('projects').addEventListener('click', () => {
+        populateFilters(Array.from(new Set(allProjects.flatMap(project => project.tags))));
         displayProjects(allProjects);
     });
 });

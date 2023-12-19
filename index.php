@@ -13,7 +13,7 @@
         <div id="logo">Your Logo</div>
         <div id="menu-items">
             <div class="menu-item">About Me</div>
-            <div class="menu-item">Projects</div>
+            <div class="menu-item" id="projects">Projects</div>
             <div id="filters">
                 <label>Filter by:</label>
                 <!-- Add filter options dynamically using JavaScript -->
