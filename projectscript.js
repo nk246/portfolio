@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let allProjects = []; // Store all projects globally
+    let currentIndex = 0; // Track the current project index
 
     // Function to fetch projects from projects.json
     async function fetchProjects() {
@@ -48,11 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const projectsContainer = document.getElementById('projects-container');
         projectsContainer.innerHTML = ''; // Clear existing projects
 
-        // Duplicate the project list for carousel effect
-        const duplicatedProjects = [...projectList, ...projectList];
-
         // Create project elements dynamically
-        duplicatedProjects.forEach((project, index) => {
+        projectList.forEach((project, index) => {
             const projectElement = document.createElement('div');
             projectElement.className = 'project';
             projectElement.innerHTML = `
@@ -89,36 +87,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to scroll to the next project
     function scrollToNextProject() {
-        const projectsContainer = document.getElementById('projects-container');
-        const scrollHeight = projectsContainer.scrollHeight;
-        const scrollTop = projectsContainer.scrollTop;
-        const clientHeight = projectsContainer.clientHeight;
+        currentIndex = (currentIndex + 1) % allProjects.length;
+        updateActiveIndicator();
+        scrollToCurrentProject();
+    }
 
-        if (scrollHeight - scrollTop === clientHeight) {
-            // If at the bottom, scroll to the first project
-            projectsContainer.scrollTop = 0;
-        } else {
-            // Scroll to the next project
-            projectsContainer.scrollTop += clientHeight;
-        }
+    // Function to scroll to the previous project
+    function scrollToPreviousProject() {
+        currentIndex = (currentIndex - 1 + allProjects.length) % allProjects.length;
+        updateActiveIndicator();
+        scrollToCurrentProject();
+    }
+
+    // Function to scroll to the current project
+    function scrollToCurrentProject() {
+        const projectsContainer = document.getElementById('projects-container');
+        projectsContainer.scrollTo({
+            top: currentIndex * projectsContainer.clientHeight,
+            behavior: 'smooth'
+        });
     }
 
     // Function to update the active project indicator
     function updateActiveIndicator() {
-        const projectsContainer = document.getElementById('projects-container');
         const projectIndicators = document.querySelectorAll('.project-indicator');
-        const index = Math.floor(projectsContainer.scrollTop / projectsContainer.clientHeight) % projectIndicators.length;
-
         projectIndicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
+            indicator.classList.toggle('active', i === currentIndex);
         });
     }
 
     // Function to jump to a specific project by clicking on the indicator
     function jumpToProject(index) {
-        const projectsContainer = document.getElementById('projects-container');
-        projectsContainer.scrollTop = index * projectsContainer.clientHeight;
+        currentIndex = index;
         updateActiveIndicator();
+        scrollToCurrentProject();
     }
 
     // Fetch projects, populate filters, and display projects
@@ -135,10 +137,11 @@ document.addEventListener('DOMContentLoaded', function () {
         displayProjects(allProjects);
     });
 
+    // Add event listeners for navigation buttons
+    document.getElementById('prev-btn').addEventListener('click', scrollToPreviousProject);
+    document.getElementById('next-btn').addEventListener('click', scrollToNextProject);
+
     // Add scroll event listener for updating active project indicator
     const projectsContainer = document.getElementById('projects-container');
     projectsContainer.addEventListener('scroll', updateActiveIndicator);
-
-    // Add interval for automatic scrolling
-    //setInterval(scrollToNextProject, 5000); // Scroll every 5 seconds (adjust as needed)
 });
