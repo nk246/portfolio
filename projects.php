@@ -10,14 +10,18 @@
 </head>
 <body>
     <div id="menu">
-        <div id="logo" href="projects.php"> <img src="media/logo/Logo.svg" alt="NK Logo" max-width="70%"></div>
+        <div id="logo" href="index.php"> <img src="media/logo/Logo.svg" alt="NK Logo" max-width="70%"></div>
         <div id="menu-items">
             <div class="menu-item"><a href="about.php">About Me</a></div>
-            <div class="menu-item" id="projects"> <a href="projects.php">Projects</a></div>
+            <div class="menu-item" id="projects"> Projects</div>
+            <div id="filters">
+                <label></label>
+                <!-- Add filter options dynamically using JavaScript -->
+            </div>
         </div>
     </div>
-    <div id="about-container">
-        
+    <div id="projects-container">
+        <!-- Display projects dynamically using JavaScript -->
     </div>
 </body>
 </html>
