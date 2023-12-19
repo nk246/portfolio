@@ -58,12 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="project-details">
                     <div class="project-title">${project.title}</div>
                     <div class="project-description">${project.description}</div>
+                    <div class="project-tags">${project.tags.join(', ')}</div>
                 </div>
             `;
 
             // Set project height to full screen
-            projectElement.style.minHeight = '100vh';
             projectElement.style.height = '100vh';
+
+            // Add click event to navigate to individual project page
+            projectElement.addEventListener('click', () => openProjectPage(project.id));
 
             projectsContainer.appendChild(projectElement);
         });
@@ -121,6 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
         currentIndex = index;
         updateActiveIndicator();
         scrollToCurrentProject();
+    }
+
+    // Function to open individual project page
+    function openProjectPage(projectId) {
+        // Assuming the PHP files are named like project1.php, project2.php, etc.
+        const phpFileName = `project${projectId}.php`;
+
+        // Use window.location to navigate to the PHP file
+        window.location.href = `/projects/${phpFileName}`;
     }
 
     // Fetch projects, populate filters, and display projects
