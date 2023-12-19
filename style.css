@@ -1,25 +1,23 @@
-/* Reset default margin for body */
 body {
     margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-/* Styles for the menu on the left side */
 #menu {
-    background: black;
-    color: white;
     position: fixed;
-    height: 100vh;
     width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+    height: 100%;
+    background-color: black;
+    color: white;
 }
 
 #logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#menu-items {
+    padding: 20px;
 }
 
 .menu-item {
@@ -27,46 +25,73 @@ body {
     cursor: pointer;
 }
 
-/* Styles for the vertical carousel and right side */
+#filters {
+    margin-top: 20px;
+}
+
+#projects-container {
+    position: absolute;
+    left: 20%;
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.project {
+    padding: 20px;
+    cursor: pointer;
+}
+
+#project-page {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s;
+    overflow-y: scroll;
+}
+
+.project-image {
+    width: 100%;
+}
+
+.project-title {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.project-description {
+    margin-bottom: 20px;
+}
+
+.arrow {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+
+/* Add styles for the vertical carousel */
 #projects-container {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    height: 100vh;
-    background: black;
-    color: white;
+    height: 100vh; /* Set the height of the container to the viewport height */
 }
 
 .project {
     scroll-snap-align: start;
-    padding: 20px;
 }
 
+/* Remove the height property for individual projects to make them scrollable */
 .project img {
     width: 100%;
     height: auto;
 }
 
-.project-details {
-    padding: 20px;
-}
-
-.project-title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.project-description {
-    margin-top: 10px;
-}
-
-.project-tags {
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* Styles for the project indicators on the right side */
+/* Add styles for the project indicators */
 #project-indicators {
     position: fixed;
     top: 50%;
@@ -90,20 +115,4 @@ body {
     background-color: #333;
 }
 
-/* Styles for the filters on the left side */
-#filters {
-    margin-top: 20px;
-    padding: 10px;
-}
 
-.filter-option {
-    cursor: pointer;
-    padding: 5px;
-}
-
-/* Add styles for the about me section */
-#about-me {
-    padding: 20px;
-}
-
-/* Add any additional styles based on your design */
