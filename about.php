@@ -12,8 +12,8 @@
     <div id="menu">
         <div id="logo">Your Logo</div>
         <div id="menu-items">
-            <div class="menu-item"  href="about.html">About Me</div>
-            <div class="menu-item" id="projects" href="index.html">Projects</div>
+            <div class="menu-item"  href="./about.html">About Me</div>
+            <div class="menu-item" id="projects" href="./index.html">Projects</div>
             <div id="filters">
                 <label></label>
                 <!-- Add filter options dynamically using JavaScript -->
