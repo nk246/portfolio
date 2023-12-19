@@ -4,19 +4,22 @@
         "id": 1,
         "title": "UX Design Project",
         "description": "A user experience design project with a focus on usability.",
-        "tags": ["ux-design", "web-design"]
+        "tags": ["ux-design", "web-design"],
+        "image": "images/project1.jpg"
       },
       {
         "id": 2,
         "title": "Media Art Installation",
         "description": "An interactive media art installation using sensors and visuals.",
-        "tags": ["media-art", "interactive"]
+        "tags": ["media-art", "interactive"],
+        "image": "images/project2.jpg"
       },
       {
         "id": 3,
         "title": "Graphic Design Showcase",
         "description": "A collection of graphic design works showcasing creativity.",
-        "tags": ["graphic-design", "visual-design"]
+        "tags": ["graphic-design", "visual-design"],
+        "image": "images/project3.jpg"
       }
     ]
   }
