@@ -9,6 +9,7 @@ $requestUri = strtok($requestUri, '?');
 // Your custom routing logic
 switch ($requestUri) {
     case '/':
+        case '/index.php':
         include 'projects.php';
         break;
     case '/about':
