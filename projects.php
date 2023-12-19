@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script defer src="projectscript.js"></script>
-    <script defer src="p5cursor.js"></script>
+    <script defer src="cursor.js"></script>
     <title>Nicolas Krewer – Portfolio</title>
 </head>
 <body>
