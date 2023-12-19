@@ -24,7 +24,7 @@
         <!-- Display projects dynamically using JavaScript -->
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch projects from projects.json
     async function fetchProjects() {
         try {
@@ -45,10 +45,17 @@
         tags.forEach(tag => {
             const filterOption = document.createElement('div');
             filterOption.className = 'filter-option';
-            filterOption.textContent = tag;
+            filterOption.textContent = humanReadableTag(tag); // Convert tag to human-readable format
             filterOption.addEventListener('click', () => filterProjects(tag));
             filterContainer.appendChild(filterOption);
         });
+    }
+
+    // Function to convert tag to human-readable format
+    function humanReadableTag(tag) {
+        // Implement your logic to convert tag to human-readable format
+        // e.g., "ux-design" to "UX Design"
+        return tag.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     }
 
     // Function to filter projects based on selected tag
@@ -99,6 +106,7 @@
         displayProjects(allProjects);
     });
 });
+
 
     </script>
 </body>
