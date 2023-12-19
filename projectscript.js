@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to open individual project page
     function openProjectPage(projectId) {
         // Assuming the PHP files are named like project1.php, project2.php, etc.
-        const phpFileName = `project${projectId}.php`;
+        const phpFileName = `${projectId}.php`;
 
         // Use window.location to navigate to the PHP file
         window.location.href = `/projects/${phpFileName}`;
