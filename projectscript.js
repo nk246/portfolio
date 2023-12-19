@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
 
             // Set project height to full screen
+            projectElement.style.minHeight = '100vh';
             projectElement.style.height = '100vh';
 
             // Add click event to navigate to individual project page
