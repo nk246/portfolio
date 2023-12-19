@@ -20,7 +20,7 @@ body {
     padding: 20px;
 }
 
-.menu-item {
+.menu-item, #filters {
     padding: 10px;
     cursor: pointer;
 }
