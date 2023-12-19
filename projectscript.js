@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="project-details">
                     <div class="project-title">${project.title}</div>
                     <div class="project-description">${project.description}</div>
-                    <div class="project-tags">${project.tags.join(', ')}</div>
                 </div>
             `;
 
             // Set project height to full screen
+            projectElement.style.minHeight = '100vh';
             projectElement.style.height = '100vh';
 
             projectsContainer.appendChild(projectElement);
