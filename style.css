@@ -71,3 +71,26 @@ body {
     left: 20px;
     cursor: pointer;
 }
+
+#project-indicators {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #888;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.project-indicator.active {
+    background-color: #333;
+}

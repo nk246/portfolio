@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+    let allProjects = []; // Store all projects globally
+
     // Function to fetch projects from projects.json
     async function fetchProjects() {
         try {
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         projectsContainer.innerHTML = ''; // Clear existing projects
 
         // Create project elements dynamically
-        projectList.forEach(project => {
+        projectList.forEach((project, index) => {
             const projectElement = document.createElement('div');
             projectElement.className = 'project';
             projectElement.innerHTML = `
@@ -64,6 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
             projectsContainer.appendChild(projectElement);
         });
+
+        // Add project indicators on the right side
+        addProjectIndicators(projectList.length);
+    }
+
+    // Function to add project indicators on the right side
+    function addProjectIndicators(projectCount) {
+        const indicatorsContainer = document.getElementById('project-indicators');
+        indicatorsContainer.innerHTML = ''; // Clear existing indicators
+
+        for (let i = 0; i < projectCount; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'project-indicator';
+            indicator.addEventListener('click', () => jumpToProject(i));
+            indicatorsContainer.appendChild(indicator);
+        }
     }
 
     // Function to scroll to the next project
@@ -71,11 +89,30 @@ document.addEventListener('DOMContentLoaded', function () {
         const nextProject = currentProject.nextElementSibling;
         if (nextProject) {
             nextProject.scrollIntoView({ behavior: 'auto', block: 'start' });
+            updateActiveIndicator(nextProject);
+        }
+    }
+
+    // Function to update the active project indicator
+    function updateActiveIndicator(currentProject) {
+        const projectIndicators = document.querySelectorAll('.project-indicator');
+        const index = Array.from(projectsContainer.children).indexOf(currentProject);
+        projectIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+
+    // Function to jump to a specific project by clicking on the indicator
+    function jumpToProject(index) {
+        const projects = Array.from(projectsContainer.children);
+        const targetProject = projects[index];
+        if (targetProject) {
+            targetProject.scrollIntoView({ behavior: 'auto', block: 'start' });
+            updateActiveIndicator(targetProject);
         }
     }
 
     // Fetch projects, populate filters, and display projects
-    let allProjects = [];
     fetchProjects().then(projects => {
         allProjects = projects;
         const allTags = projects.flatMap(project => project.tags);
