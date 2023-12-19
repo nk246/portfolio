@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="projects-container">
+    <div id="about">
         <!-- Display projects dynamically using JavaScript -->
     </div>
 </body>

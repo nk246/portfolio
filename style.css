@@ -16,33 +16,26 @@ body {
 }
 
 #menu {
-    background: linear-gradient(to bottom, #727F9F 0%, #727F9F 60%, #FFFFFF 60%, #FFFFFF 100%);
     position: fixed;
-    height: 100vh;
     width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+    height: 100%;
+    /*background-color: #727f9f;*/
+    background: linear-gradient(to bottom, #727F9F 0%, #727F9F 60%, #FFFFFF 60%, #FFFFFF 100%);
+    color: white;
 }
 
 #logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    padding: 20px;
 }
-
-.menu-item {
-    padding: 10px;
-    cursor: pointer;
-}
-
 
 #logo img {
     padding: 10px;
     width: 30%;
 }
 
+#menu-items {
+    padding: 20px;
+}
 
 .menu-item, #filters {
     padding: 10px;
