@@ -19,8 +19,7 @@ body {
     position: fixed;
     width: 20%;
     height: 100%;
-    /*background-color: #727f9f;*/
-    background: linear-gradient(to bottom, #727F9F 0%, #727F9F 60%, #FFFFFF 60%, #FFFFFF 100%);
+    background-color: #727f9f;
     color: white;
 }
 
