@@ -27,6 +27,10 @@ body {
     padding: 20px;
 }
 
+#logo img {
+    padding: 10px;
+}
+
 #menu-items {
     padding: 20px;
 }
