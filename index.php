@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script defer src="projectscript.js"></script>
-    <title>Your Portfolio</title>
+    <title>Nicolas Krewer – Portfolio</title>
 </head>
 <body>
     <div id="menu">
-        <div id="logo">Your Logo</div>
+        <div id="logo" href="index.php"> <img src="" alt="NK Logo"></div>
         <div id="menu-items">
             <div class="menu-item">About Me</div>
             <div class="menu-item" id="projects">Projects</div>
