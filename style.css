@@ -42,6 +42,11 @@ body {
     line-height: 1.5rem;
 }
 
+.menu-item a {
+    color: white;
+    text-decoration: none;
+}
+
 #filters {
     margin-top: 20px;
 }
