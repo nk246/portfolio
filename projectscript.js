@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function populateFilters(tags) {
         const filterContainer = document.getElementById('filters');
 
+        // Clear existing filters
+        filterContainer.innerHTML = '';
+
         // Create filter options dynamically
         tags.forEach(tag => {
             const filterOption = document.createElement('div');
@@ -123,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Reset filters and display all projects when "Projects" is clicked
     document.getElementById('projects').addEventListener('click', () => {
-        populateFilters(Array.from(new Set(allProjects.flatMap(project => project.tags))));
         displayProjects(allProjects);
     });
 });
