@@ -15,7 +15,7 @@
             <div class="menu-item">About Me</div>
             <div class="menu-item" id="projects">Projects</div>
             <div id="filters">
-                <label>Filter by:</label>
+                <label></label>
                 <!-- Add filter options dynamically using JavaScript -->
             </div>
         </div>
