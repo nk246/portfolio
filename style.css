@@ -72,6 +72,26 @@ body {
     cursor: pointer;
 }
 
+/* Add styles for the vertical carousel */
+#projects-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    height: 100vh; /* Set the height of the container to the viewport height */
+}
+
+.project {
+    scroll-snap-align: start;
+}
+
+/* Remove the height property for individual projects to make them scrollable */
+.project img {
+    width: 100%;
+    height: auto;
+}
+
+/* Add styles for the project indicators */
 #project-indicators {
     position: fixed;
     top: 50%;
@@ -94,3 +114,5 @@ body {
 .project-indicator.active {
     background-color: #333;
 }
+
+

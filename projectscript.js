@@ -61,9 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
-            // Set project height to full screen
-            projectElement.style.height = '100vh';
-
             // Add click event to navigate to next project
             projectElement.addEventListener('click', () => scrollToNextProject(projectElement));
 
@@ -91,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function scrollToNextProject(currentProject) {
         const nextProject = currentProject.nextElementSibling;
         if (nextProject) {
-            nextProject.scrollIntoView({ behavior: 'auto', block: 'start' });
+            nextProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
             updateActiveIndicator(nextProject);
         }
     }
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const projects = Array.from(projectsContainer.children);
         const targetProject = projects[index];
         if (targetProject) {
-            targetProject.scrollIntoView({ behavior: 'auto', block: 'start' });
+            targetProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
             updateActiveIndicator(targetProject);
         }
     }
