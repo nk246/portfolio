@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="menu">
-        <div id="logo" href="index.php"> <img src="" alt="NK Logo"></div>
+        <div id="logo" href="index.php"> <img src="media/logo/Logo.svg" alt="NK Logo"></div>
         <div id="menu-items">
             <div class="menu-item">About Me</div>
             <div class="menu-item" id="projects">Projects</div>
